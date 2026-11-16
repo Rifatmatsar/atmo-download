@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "ATMO — Hava Durumu & Kombin",
+  "short_name": "ATMO",
+  "description": "Hava durumunu takip et, gününe ve tarzına hazırlan.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#071526",
+  "theme_color": "#071526",
+  "icons": [
+    {
+      "src": "./atmo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
