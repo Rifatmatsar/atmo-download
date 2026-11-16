@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081725">
+  <meta name="description" content="ATMO — Hava durumunu tarzınla buluştur. Android için ATMO'yu keşfet ve indir.">
+  <title>ATMO — Hava durumunu tarzınla buluştur</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#071522;--panel:#0d2030;--text:#f3f8fc;--muted:#9db0c0;--cyan:#65d8f2;--line:rgba(190,224,242,.13)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#153b53 0%,#0a1d2c 38%,var(--bg) 76%);color:var(--text);font-family:"DM Sans",sans-serif;min-height:100vh}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:.22em;font-size:19px}.brand img{width:42px;height:42px;border-radius:13px;box-shadow:0 8px 28px #0005}
+    .nav-note{font-size:13px;color:var(--muted);letter-spacing:.04em}
+    .hero{padding:104px 0 94px;text-align:center;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid #6bdcf233;background:#65d8f20c;border-radius:99px;color:#a9eafa;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:#65d8f2;box-shadow:0 0 14px #65d8f2}
+    h1{font-family:Manrope,sans-serif;font-size:clamp(42px,7vw,76px);line-height:1.05;letter-spacing:-.055em;margin:27px auto 20px;max-width:850px;font-weight:800}
+    h1 span{background:linear-gradient(100deg,#fff 12%,#9be9f8 75%,#69bfe5);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{max-width:610px;margin:0 auto;color:#a9bac8;font-size:17px;line-height:1.8}
+    .actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:36px}
+    .btn{min-height:54px;padding:0 23px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:11px;text-decoration:none;font-weight:800;font-size:14px;transition:.2s}
+    .primary{background:linear-gradient(115deg,#9beafa,#57c7e8);color:#062033;box-shadow:0 10px 35px #4ac8e52c}.primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px #4ac8e54a}
+    .secondary{border:1px solid var(--line);color:#d8e6ef;background:#ffffff08}.secondary:hover{background:#ffffff12}
+    .meta{margin-top:18px;color:#8298a9;font-size:12px}
+    .showcase{max-width:850px;margin:0 auto 88px;padding:1px;border-radius:28px;background:linear-gradient(135deg,#70dff455,#ffffff0b 48%,#70dff422);box-shadow:0 35px 100px #0005}
+    .showcase-inner{border-radius:27px;background:linear-gradient(140deg,#102a3b,#0b1a28);padding:35px;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
+    .tile{border:1px solid var(--line);border-radius:19px;padding:25px;background:linear-gradient(145deg,#ffffff09,#ffffff03);min-height:160px}
+    .tile .symbol{font-size:25px;margin-bottom:19px}.tile h3{font-family:Manrope,sans-serif;margin:0 0 8px;font-size:17px}.tile p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+    .section{padding:0 0 90px}.section-head{text-align:center;margin-bottom:30px}.section-head h2{font:800 27px Manrope,sans-serif;letter-spacing:-.03em;margin:0 0 10px}.section-head p{margin:0;color:var(--muted);font-size:14px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:23px;border:1px solid var(--line);background:#ffffff05;border-radius:18px}.num{font-size:11px;color:var(--cyan);font-weight:800;letter-spacing:.14em}.step h3{font:700 15px Manrope,sans-serif;margin:13px 0 7px}.step p{font-size:13px;line-height:1.65;color:var(--muted);margin:0}
+    footer{border-top:1px solid var(--line);padding:25px 0 35px;color:#8297a7;font-size:12px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:650px){.hero{padding:76px 0 66px}.lead{font-size:15px}.showcase{margin-bottom:70px}.showcase-inner{grid-template-columns:1fr;padding:17px}.tile{min-height:auto}.steps{grid-template-columns:1fr}.nav-note{display:none}.section{padding-bottom:65px}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <div class="brand"><img src="./favicon.svg" alt=""><span>ATMO</span></div>
+    <div class="nav-note">HAVA DURUMU · GÜNLÜK TARZ</div>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <div class="eyebrow"><span class="dot"></span> ANDROID UYGULAMASI</div>
+      <h1>Hava durumunu<br><span>tarzınla buluştur.</span></h1>
+      <p class="lead">Güne hazırlanırken hava koşullarını ve kombinlerini tek bir deneyimde bir araya getir. ATMO ile gününe daha bilinçli başla.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk" aria-label="ATMO Android APK indir">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Android için indir
+        </a>
+        <a class="btn secondary" href="https://github.com/Rifatmatsar/atmo-download/releases/latest">Sürüm notları <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="meta">Android APK · Ücretsiz indirme</div>
+    </section>
+    <section class="wrap showcase" aria-label="ATMO özellikleri">
+      <div class="showcase-inner">
+        <article class="tile"><div class="symbol">☀️</div><h3>Hava koşullarını takip et</h3><p>Günün hava durumunu kontrol et, dışarı çıkmadan önce hazırlığını yap.</p></article>
+        <article class="tile"><div class="symbol">✦</div><h3>Kombinlerini düzenle</h3><p>Kendi gardırobunu oluştur ve kombinlerini bir arada tut.</p></article>
+        <article class="tile"><div class="symbol">⌁</div><h3>Gününe hazır başla</h3><p>Hava bilgisi ve kişisel kombin alanını aynı uygulamada kullan.</p></article>
+        <article class="tile"><div class="symbol">◈</div><h3>Sade bir deneyim</h3><p>Günlük kullanım için tasarlanmış, anlaşılır ve modern bir arayüz.</p></article>
+      </div>
+    </section>
+    <section class="wrap section">
+      <div class="section-head"><h2>Kurulum birkaç adımda</h2><p>ATMO'yu Android cihazına kolayca yükle.</p></div>
+      <div class="steps">
+        <article class="step"><div class="num">01 / İNDİR</div><h3>APK dosyasını al</h3><p>Android için indir butonuna dokunarak en güncel kurulum dosyasını indir.</p></article>
+        <article class="step"><div class="num">02 / İZİN VER</div><h3>Kurulumu başlat</h3><p>İstenirse Android ayarlarından kullandığın tarayıcı için bu kaynaktan yükleme izni ver.</p></article>
+        <article class="step"><div class="num">03 / KULLAN</div><h3>ATMO'yu aç</h3><p>Kurulum tamamlandığında uygulamayı aç ve ATMO deneyimini keşfet.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap foot"><span>© 2026 ATMO. Tüm hakları saklıdır.</span><span>Hava durumun. Tarzın. ATMO.</span></div></footer>
+</body>
+</html>
