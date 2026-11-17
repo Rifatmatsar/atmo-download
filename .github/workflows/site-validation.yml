@@ -1,0 +1,32 @@
+name: ATMO Download Site Validation
+
+on:
+  push:
+    branches:
+      - redesign/atmo-ai-launch-20261117
+    paths:
+      - "index.html"
+      - "scripts/validate-site.py"
+      - ".github/workflows/site-validation.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "scripts/validate-site.py"
+      - ".github/workflows/site-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Check landing page structure and navigation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Validate page and internal links
+        run: python3 scripts/validate-site.py
+      - name: Check whitespace errors
+        run: git diff --check
