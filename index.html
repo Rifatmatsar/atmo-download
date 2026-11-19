@@ -2,16 +2,16 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#071522">
-  <meta name="description" content="ATMO; ayrıntılı hava durumu, kişisel gardırop, hava koşullarına uygun kombin önerileri ve ATMO AI stil asistanını tek uygulamada buluşturur. Android için indir.">
+  <meta name="description" content="ATMO; hava durumu, kişisel gardırop, kombin önerileri ve ATMO AI stil asistanını bir araya getirir. Android için indir, iPhone ve iPad’de web uygulaması olarak kullan.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://rifatmatsar.github.io/atmo-download/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:site_name" content="ATMO">
   <meta property="og:title" content="ATMO — Havanı bil, gününü planla">
-  <meta property="og:description" content="Hava durumu, gardırobun ve ATMO AI tek yerde. ATMO'yu keşfet ve Android için indir.">
+  <meta property="og:description" content="Hava durumu, gardırobun ve ATMO AI tek yerde. Android için indir veya iPhone ve iPad’de web sürümünü kullan.">
   <meta name="twitter:card" content="summary">
   <title>ATMO — Havanı bil, gününü planla</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -434,6 +434,22 @@
       html { scroll-behavior:auto; }
       *, *:before, *:after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     }
+
+    .ios-web-card {
+      display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:30px;
+      margin-top:22px; padding:30px; border-radius:26px;
+      border:1px solid rgba(165,223,255,.17);
+      background:linear-gradient(135deg,rgba(31,75,100,.42),rgba(255,255,255,.025));
+    }
+    .ios-web-card h3 { margin:12px 0 9px; color:#f1fbff; font:800 clamp(22px,3vw,32px)/1.15 Manrope,sans-serif; letter-spacing:-.04em; }
+    .ios-web-card p { max-width:710px; color:#a9bdca; font-size:12px; line-height:1.8; }
+    .ios-web-steps { display:grid; gap:8px; margin:18px 0 0; padding-left:20px; color:#93aebe; font-size:11px; line-height:1.7; }
+    .ios-web-steps strong { color:#dff8ff; }
+    .ios-web-open { white-space:nowrap; }
+    @media (max-width: 700px) {
+      .ios-web-card { grid-template-columns:1fr; gap:20px; padding:24px 18px; }
+      .ios-web-open { width:100%; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -441,7 +457,7 @@
     "@type": "SoftwareApplication",
     "name": "ATMO",
     "applicationCategory": "WeatherApplication",
-    "operatingSystem": "Android",
+    "operatingSystem": "Android, iOS (Safari web app)",
     "description": "Hava durumu, kişisel gardırop, kombin önerileri ve ATMO AI stil asistanı.",
     "downloadUrl": "https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk"
   }
@@ -467,7 +483,7 @@
     <section class="wrap hero">
       <div class="hero-grid">
         <div class="hero-text">
-          <div class="release-pill"><span>●</span> ATMO v1.1.4 · ANDROID</div>
+          <div class="release-pill"><span>●</span> ATMO v1.1.4 · ANDROID + iOS WEB</div>
           <div class="eyebrow"><span class="spark"></span> HAVA DURUMU. TARZ. YAPAY ZEKÂ.</div>
           <h1>Havanı bil.<span class="gradient">Gününü planla.</span></h1>
           <p class="hero-copy">
@@ -480,11 +496,12 @@
               Android için ücretsiz indir
             </a>
             <a class="btn btn-secondary" href="#atmo-ai">ATMO AI'ı keşfet <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-secondary" href="./app/" aria-label="ATMO iPhone ve iPad web sürümünü aç">iPhone / iPad’de kullan ↗</a>
           </div>
           <div class="hero-meta">
             <span><i></i> Android APK</span>
+            <span><i></i> iPhone / iPad · Safari</span>
             <span><i></i> v1.1.4</span>
-            <span><i></i> Ücretsiz indirme</span>
           </div>
         </div>
 
@@ -641,20 +658,34 @@
       <div class="download-card">
         <div class="eyebrow"><span class="spark"></span> ATMO'YU KEŞFET</div>
         <h2>Gününe ATMO ile hazırlan.</h2>
-        <p>ATMO v1.1.4 Android sürümünü indir. Hava durumunu, kişisel gardırobunu ve ATMO AI deneyimini tek uygulamada keşfet.</p>
+        <p>Android’de ATMO v1.1.4 APK’yı indir; iPhone ve iPad’de aynı ATMO web deneyimini Safari üzerinden kullan. Hava durumunu, kişisel gardırobunu ve ATMO AI’ı tek yerde keşfet.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
             ATMO APK'yı indir
           </a>
           <a class="btn btn-secondary" href="https://github.com/Rifatmatsar/atmo-download/releases/tag/v1.1.4">Sürüm ve SHA-256 bilgisi ↗</a>
+          <a class="btn btn-secondary" href="./app/" aria-label="ATMO iOS web uygulamasını aç">iPhone / iPad web sürümünü aç ↗</a>
         </div>
         <div class="download-detail">
           <span><b>Android</b> · APK</span>
           <span><b>v1.1.4</b> · Güncel sürüm</span>
           <span><b>4,83 MB</b> · Dosya boyutu</span>
         </div>
-        <p class="install-note">Kurulum, Android cihazlarda yapılır. Cihazın yükleme sırasında ek izin isterse yalnızca indirdiğin ATMO APK dosyası için Android'in gösterdiği adımları takip et.</p>
+        <p class="install-note">APK kurulumu Android cihazlar içindir. iPhone ve iPad’de APK gerekmez; aşağıdaki web sürümünü Safari’de açıp ana ekrana ekleyebilirsin.</p>
+      </div>
+      <div class="ios-web-card">
+        <div>
+          <div class="eyebrow"><span class="spark"></span> IPHONE / IPAD · SAFARI</div>
+          <h3>ATMO cebinde, uygulama gibi.</h3>
+          <p>iOS için App Store veya APK indirmene gerek yok. ATMO’yu Safari’de aç, Paylaş menüsünden Ana Ekrana Ekle’yi seç ve kendi simgesinden tam ekran kullan.</p>
+          <ol class="ios-web-steps">
+            <li><strong>Safari’de aç</strong> — ATMO web sürümüne gir.</li>
+            <li><strong>Paylaş</strong> — Safari araç çubuğundaki paylaşım simgesine dokun.</li>
+            <li><strong>Ana Ekrana Ekle</strong> — Ekle’ye dokun; ATMO simgesi hazır.</li>
+          </ol>
+        </div>
+        <a class="btn btn-primary ios-web-open" href="./app/">ATMO iOS web sürümünü aç ↗</a>
       </div>
     </section>
 
@@ -666,7 +697,15 @@
       <div class="faq">
         <details>
           <summary>ATMO hangi cihazlarda kullanılabilir?</summary>
-          <p>Bu sayfadan sunulan v1.1.4 kurulum dosyası Android içindir.</p>
+          <p>Android’de v1.1.4 APK kullanılabilir. iPhone ve iPad’de ATMO, Safari üzerinden web uygulaması olarak çalışır.</p>
+        </details>
+        <details>
+          <summary>iPhone veya iPad’e nasıl eklerim?</summary>
+          <p>ATMO web sürümünü Safari’de aç. Paylaş simgesine dokun, Ana Ekrana Ekle’yi seç ve Ekle’ye dokun. ATMO artık ana ekranında ayrı bir simgeyle açılır.</p>
+        </details>
+        <details>
+          <summary>iOS web sürümü Android uygulamasıyla aynı mı?</summary>
+          <p>Hava durumu, gardırop ve ATMO AI web sürümünde kullanılabilir. iOS web sürümünde arka planda anlık telefon bildirimi şu anda etkin değildir; ayrıca App Store’dan yüklenen native bir uygulama değildir.</p>
         </details>
         <details>
           <summary>ATMO AI nasıl çalışır?</summary>
