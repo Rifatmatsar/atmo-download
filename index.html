@@ -450,6 +450,14 @@
       .ios-web-card { grid-template-columns:1fr; gap:20px; padding:24px 18px; }
       .ios-web-open { width:100%; }
     }
+
+    /* Cihaz türüne göre tek dokunuşla doğru ATMO deneyimine yönlendir */
+    .ios-web-direct-link { display: inline-flex; }
+    html.platform-android .ios-web-card,
+    html.platform-android .ios-web-direct-link { display: none !important; }
+    html.platform-ios .android-only { display: none !important; }
+    html.platform-ios .ios-web-direct-link { display: none !important; }
+    html.platform-ios .ios-web-card { display: grid; }
   </style>
   <script type="application/ld+json">
   {
@@ -491,12 +499,12 @@
             <strong>ATMO, hava koşullarını kişisel tarzınla bir araya getirir.</strong>
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk" aria-label="ATMO Android APK dosyasını indir">
+            <a class="btn btn-primary" data-platform-cta="hero" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk" aria-label="ATMO Android APK dosyasını indir">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Android için ücretsiz indir
             </a>
             <a class="btn btn-secondary" href="#atmo-ai">ATMO AI'ı keşfet <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-secondary" href="./app/" aria-label="ATMO iPhone ve iPad web sürümünü aç">iPhone / iPad’de kullan ↗</a>
+            <a class="btn btn-secondary ios-web-direct-link" href="./app/" aria-label="ATMO iPhone ve iPad web sürümünü aç">iPhone / iPad’de kullan ↗</a>
           </div>
           <div class="hero-meta">
             <span><i></i> Android APK</span>
@@ -660,19 +668,19 @@
         <h2>Gününe ATMO ile hazırlan.</h2>
         <p>Android’de ATMO v1.1.4 APK’yı indir; iPhone ve iPad’de aynı ATMO web deneyimini Safari üzerinden kullan. Hava durumunu, kişisel gardırobunu ve ATMO AI’ı tek yerde keşfet.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk">
+          <a class="btn btn-primary" data-platform-cta="download" href="https://github.com/Rifatmatsar/atmo-download/releases/latest/download/ATMO.apk">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
             ATMO APK'yı indir
           </a>
-          <a class="btn btn-secondary" href="https://github.com/Rifatmatsar/atmo-download/releases/tag/v1.1.4">Sürüm ve SHA-256 bilgisi ↗</a>
-          <a class="btn btn-secondary" href="./app/" aria-label="ATMO iOS web uygulamasını aç">iPhone / iPad web sürümünü aç ↗</a>
+          <a class="btn btn-secondary android-only" href="https://github.com/Rifatmatsar/atmo-download/releases/tag/v1.1.4">Sürüm ve SHA-256 bilgisi ↗</a>
+          <a class="btn btn-secondary ios-web-direct-link" href="./app/" aria-label="ATMO iOS web uygulamasını aç">iPhone / iPad web sürümünü aç ↗</a>
         </div>
-        <div class="download-detail">
+        <div class="download-detail android-only">
           <span><b>Android</b> · APK</span>
           <span><b>v1.1.4</b> · Güncel sürüm</span>
           <span><b>4,83 MB</b> · Dosya boyutu</span>
         </div>
-        <p class="install-note">APK kurulumu Android cihazlar içindir. iPhone ve iPad’de APK gerekmez; aşağıdaki web sürümünü Safari’de açıp ana ekrana ekleyebilirsin.</p>
+        <p class="install-note android-only">APK kurulumu Android cihazlar içindir. iPhone ve iPad’de APK gerekmez; ATMO web sürümünü Safari’de açıp ana ekrana ekleyebilirsin.</p>
       </div>
       <div class="ios-web-card">
         <div>
@@ -735,5 +743,27 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const userAgent = navigator.userAgent || "";
+      const platform = navigator.platform || "";
+      const isIOS =
+        /iPhone|iPad|iPod/i.test(userAgent) ||
+        (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isAndroid = /Android/i.test(userAgent);
+      const root = document.documentElement;
+
+      root.classList.add(isIOS ? "platform-ios" : isAndroid ? "platform-android" : "platform-desktop");
+
+      if (!isIOS) return;
+
+      document.querySelectorAll("[data-platform-cta]").forEach((link) => {
+        link.href = "./app/";
+        link.setAttribute("aria-label", "ATMO iOS web uygulamasını aç");
+        link.innerHTML = '<span aria-hidden="true">↗</span> ATMO’yu aç';
+      });
+    })();
+  </script>
 </body>
 </html>
