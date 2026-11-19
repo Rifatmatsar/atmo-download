@@ -29,5 +29,14 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
-  ]
+  ],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "categories": [
+    "weather",
+    "lifestyle"
+  ],
+  "prefer_related_applications": false
 }
