@@ -458,6 +458,74 @@
     html.platform-ios .android-only { display: none !important; }
     html.platform-ios .ios-web-direct-link { display: none !important; }
     html.platform-ios .ios-web-card { display: grid; }
+  
+    /* ATMO tanıtım videosu açılış penceresi */
+    .atmo-promo-backdrop {
+      position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center;
+      padding: 22px; background: rgba(2, 9, 17, .78);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
+    }
+    .atmo-promo-backdrop.is-visible { opacity: 1; visibility: visible; }
+    .atmo-promo-modal {
+      position: relative; width: min(430px, 100%); padding: 12px;
+      border-radius: 25px; overflow: hidden;
+      background: linear-gradient(145deg, #132e42, #091725 72%);
+      border: 1px solid rgba(145, 222, 242, .28);
+      box-shadow: 0 28px 100px rgba(0,0,0,.62), 0 0 55px rgba(76,190,220,.12);
+      transform: translateY(12px) scale(.98); transition: transform .25s ease;
+    }
+    .atmo-promo-backdrop.is-visible .atmo-promo-modal { transform: translateY(0) scale(1); }
+    .atmo-promo-close {
+      position: absolute; z-index: 3; top: 20px; right: 20px;
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.24); border-radius: 50%;
+      background: rgba(3,13,23,.78); color: #fff; font-size: 23px;
+      line-height: 1; cursor: pointer; backdrop-filter: blur(8px);
+    }
+    .atmo-promo-kicker {
+      display: flex; align-items: center; gap: 8px; padding: 8px 7px 13px;
+      color: #a8eaf5; font: 800 10px "Manrope",sans-serif; letter-spacing: .16em;
+    }
+    .atmo-promo-kicker:before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 13px var(--cyan);
+    }
+    .atmo-promo-frame {
+      position: relative; overflow: hidden; width: 100%; aspect-ratio: 9 / 16;
+      max-height: min(62vh, 590px); border-radius: 17px;
+      background: #030b13; border: 1px solid rgba(190,224,242,.12);
+    }
+    .atmo-promo-frame iframe {
+      display: block; width: 100%; height: 100%; border: 0;
+      pointer-events: none; background: #030b13;
+    }
+    .atmo-promo-hitarea { position: absolute; inset: 0; z-index: 2; display: block; }
+    .atmo-promo-footer { padding: 15px 7px 7px; text-align: center; }
+    .atmo-promo-footer strong {
+      display: block; color: var(--text); font: 800 17px "Manrope",sans-serif;
+      letter-spacing: -.03em;
+    }
+    .atmo-promo-footer span {
+      display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.6;
+    }
+    .atmo-promo-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 43px; margin-top: 13px; padding: 0 18px; border-radius: 13px;
+      color: #062033; text-decoration: none; font-size: 12px; font-weight: 800;
+      background: linear-gradient(110deg, #a5eff7, #65cbea);
+      box-shadow: 0 8px 25px rgba(70,194,222,.18);
+    }
+    @media (max-width: 480px) {
+      .atmo-promo-backdrop { padding: 14px; }
+      .atmo-promo-modal { width: min(390px, 100%); padding: 10px; border-radius: 21px; }
+      .atmo-promo-frame { max-height: 57vh; }
+      .atmo-promo-footer strong { font-size: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .atmo-promo-backdrop, .atmo-promo-modal { transition: none; }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -472,6 +540,28 @@
   </script>
 </head>
 <body>
+
+  <div class="atmo-promo-backdrop" id="atmo-promo-modal" aria-hidden="true">
+    <section class="atmo-promo-modal" role="dialog" aria-modal="true" aria-label="ATMO tanıtım videosu">
+      <button class="atmo-promo-close" type="button" aria-label="Pencereyi kapat">×</button>
+      <div class="atmo-promo-kicker">ATMO'YU KEŞFET</div>
+      <div class="atmo-promo-frame">
+        <iframe
+          src="https://drive.google.com/file/d/1Rt_ZILZPZuvzYxa3lKBPgNbDLUydvyiF/preview?autoplay=1&mute=1"
+          title="ATMO tanıtım videosu"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="eager"></iframe>
+        <a class="atmo-promo-hitarea" href="#indir" aria-label="ATMO indirme bölümüne git"></a>
+      </div>
+      <div class="atmo-promo-footer">
+        <strong>Hava, tarz ve yapay zekâ. Tek yerde.</strong>
+        <span>ATMO'yu keşfetmek için videoya dokun.</span>
+        <a class="atmo-promo-cta" href="#indir">ATMO'yu keşfet <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </div>
+
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
   <header class="site-header">
     <div class="wrap nav">
@@ -765,5 +855,47 @@
       });
     })();
   </script>
+
+  <script>
+    (() => {
+      const modal = document.getElementById("atmo-promo-modal");
+      if (!modal) return;
+      const closeButton = modal.querySelector(".atmo-promo-close");
+      const storageKey = "atmoPromoDismissed";
+      let previousFocus = null;
+
+      const closeModal = () => {
+        modal.classList.remove("is-visible");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        try { sessionStorage.setItem(storageKey, "1"); } catch (_) {}
+        if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
+      };
+
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      modal.querySelectorAll('a[href="#indir"]').forEach((link) => {
+        link.addEventListener("click", () => closeModal());
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-visible")) closeModal();
+      });
+
+      let dismissed = false;
+      try { dismissed = sessionStorage.getItem(storageKey) === "1"; } catch (_) {}
+      if (!dismissed) {
+        previousFocus = document.activeElement;
+        window.setTimeout(() => {
+          modal.classList.add("is-visible");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          closeButton.focus();
+        }, 650);
+      }
+    })();
+  </script>
+
 </body>
 </html>
